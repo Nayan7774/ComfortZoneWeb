@@ -1,0 +1,989 @@
+
+   
+   *,
+   *::before,
+   *::after {
+       box-sizing: border-box;
+   }
+
+   /* ===========================================
+      1. GENERAL & BASE STYLES
+      =========================================== */   
+   
+   html, body {
+       max-width: 100%;
+       overflow-x: hidden;
+   }
+
+body { 
+    margin: 0; 
+    font-family: "Times New Roman", Georgia, Garamond, serif;
+}
+
+body.modal-open { 
+    overflow: hidden; 
+}
+
+section {
+    padding: 60px 40px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.half {
+    width: 48%;
+}
+
+/*1.1 =============================
+Smooth Scrolling
+================================*/
+html {
+    scroll-behavior: smooth;
+    /* Change 80px to match the height of your header */
+    scroll-padding-top: 80px; 
+}
+a[href="#our-services"] {
+    text-decoration: none;
+}
+
+
+/* ===========================================
+   2. TOP STRIP (LOGO & HEADER TEXT)
+   =========================================== */
+.top-strip {
+    width: 100%;
+    min-height: 110px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;           
+    justify-content: space-between; 
+    padding: 10px 80px;
+    background: #ffffff;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.top-strip img {
+    height: 75px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: #128C7E;
+    margin: 0;
+    font-family: sans-serif;
+    letter-spacing: -0.5px;
+}
+
+.header-text {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; 
+}
+
+.tagline {
+    font-size: 16px;
+    font-weight: 700;
+    color: #222;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.promo-badge {
+    font-size: 18px;
+    font-weight: 800;
+    color: #666;
+    margin: 0;
+}
+
+.promo-badge span {
+    background: #fdf2f2;
+    color: #e63946;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-weight: 800;
+    border: 1px solid #ffcccc;
+}
+
+.header-action {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.whatsapp-btn {
+    background-color: #25D366;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+
+    animation: whatsapp-pulse 2s infinite;
+}
+
+.whatsapp-btn:hover {
+    background-color: #128C7E;
+    transform: translateY(-2px);
+    animation: none; 
+    box-shadow: 0 6px 15px rgba(18, 140, 126, 0.4);
+    color: #fff;
+}
+
+/* NEW: STICKY WHATSAPP */
+.whatsapp-sticky {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 2px 4px 15px rgba(0,0,0,0.3);
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+.whatsapp-sticky:hover { transform: scale(1.1); background-color: #128C7E; }
+
+@keyframes whatsapp-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* ===========================================
+   3. HERO SECTION
+   =========================================== */
+   .hero {
+       /* Combined background for cleaner code and better loading */
+       background: url('/images/New images/resize living room set lights off.651.jpg') no-repeat center center;
+       
+       /* FIX: 'cover' ensures the image fills the 90vh height without gaps */
+       /*background-size: contain; */
+       
+	  background-size:auto; 
+	      /* background-position: left center;*/
+	   	
+       height: 90vh;
+	   width: 100%;
+       display: flex;
+       justify-content: space-between;
+       padding: 2px 40px 40px 40px;
+       color: rgb(0, 0, 0);   
+       
+       /* Removed the 1000px auto line as it overrides 'cover' and causes layout issues */
+	  /* background-color: #000000;*/
+	   
+       image-rendering: -webkit-optimize-contrast;
+       image-rendering: crisp-edges;     
+   }
+
+.hero-left {
+    width: 60%;
+    margin-top: 10px;
+}
+
+.hero-left h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.hero-left p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/*
+.cta-buttons button {
+    padding: 12px 20px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 12px;
+	
+	
+}*/
+
+.btn-primary { background: #128C7E; color: white; }
+
+.btn-outline {
+	
+	 border: 2px solid #128C7E; 
+	 background-color: #128C7E; 
+	 color: #ececec;
+	    width: 250px;
+	    padding: 12px;
+	    margin-bottom: 15px;
+	    border-radius: 12px;
+	    box-sizing: border-box; 
+		text-align: center;
+	    font-size: 18px;
+	    line-height: 1.5;
+	    display: inline;	
+		margin-right: 10px;
+		cursor: pointer;
+ 		
+ }
+.btn-text { background: transparent; color: #128C7E; text-decoration: underline; }
+
+.hero-form {
+    width: 25%;
+    background: rgba(255, 255, 255, 0.95);    
+    padding: 30px 25px; 
+    border-radius: 12px;
+    color: black;
+    margin-top: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-sizing: border-box; 
+}
+
+.hero-form input, 
+.hero-form button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-sizing: border-box; 
+    font-size: 18px;
+    line-height: 1.5;
+    display: block;
+}
+
+.hero-form input:focus {
+    outline: none;
+    border: 2px solid #128C7E;
+    box-shadow: 0 0 5px rgba(18, 140, 126, 0.3);
+}
+
+.hero-form button {
+    background: #128C7E;
+    border: 1px solid #128C7E;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ===========================================
+   4. SERVICES (SHADOW LIFT)
+   =========================================== */
+.services {
+    background: #f7f7f7;
+}
+
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: #fff;
+    padding: 30px 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(18, 140, 126, 0.15);
+    border: 1px solid #128C7E;
+}
+
+.card .icon {
+    font-size: 35px;
+    color: #128C7E;
+    margin-bottom: 15px;
+}
+
+.full-services {
+    background: #f7f7f7;
+}
+
+.service-block {
+    width: 30%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ===========================================
+   NEW: TRUST COUNTER SECTION
+   =========================================== */
+   .trust-counter {
+       background-color: #f0fdfa;
+       padding: 60px 20px;
+   }
+
+   .counter-grid {
+       display: flex;
+       justify-content: center;
+       flex-wrap: wrap;
+       max-width: 1200px;
+       margin: 0 auto;
+       gap: 20px;
+   }
+
+   .counter-item { 
+       text-align: center; 
+       padding: 20px; 
+       flex: 1;
+       min-width: 200px;
+	   min-height: 120px;
+   }
+
+   .counter-number { 
+       font-size: 48px; 
+       font-weight: 800; 
+       color: #128C7E; 
+       margin: 0; 
+       display: flex; 
+       align-items: baseline; /* Aligns + symbol to bottom of text */
+       justify-content: center;
+       transition: transform 0.3s ease;
+   }
+   .counter-item:hover .counter-number {
+       transform: scale(1.1);
+   }
+
+   .symbol {
+       font-size: 28px;
+       margin-left: 2px;
+       color: #128C7E;
+       opacity: 0; 
+       animation: fadeInSymbol 0.5s ease forwards 0.5s;
+   }
+   .counter-label { 
+       font-size: 16px; 
+       font-weight: 600; 
+       color: #444; 
+       text-transform: uppercase; 
+       margin-top: 8px;
+   }
+
+  
+   .count {
+       display: inline-block;
+       opacity: 1 !important; 
+       visibility: visible !important;
+       min-width: 10px;
+   }
+   /* Animations */
+   @keyframes fadeInSymbol {
+       from { opacity: 0; transform: translateY(5px); }
+       to { opacity: 1; transform: translateY(0); }
+   }
+
+   @media (min-width: 768px) {
+       .counter-item:not(:last-child) {
+           border-right: 1px solid #e2e8f0;
+       }
+   }
+
+/* ===========================================
+   5. WHY CHOOSE US
+   =========================================== */
+.why {
+    background: #ffffff;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.why-item {
+    background: #fff;
+    padding: 30px 25px;
+    border-radius: 12px;
+    text-align: center;	
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.why-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.why-item .icon {
+    font-size: 36px;
+    color: #128C7E;
+    margin-bottom: 15px;
+}
+
+   /* ===========================================
+      6. PORTFOLIO & REVIEWS
+      =========================================== */
+	  /* ===========================================
+	     6. PORTFOLIO & REVIEWS
+	     =========================================== */
+	  .portfolio {
+	      background: #f7f7f7;
+	  }
+
+	  .portfolio-grid {
+	      display: flex;
+	      justify-content: center;
+	      align-items: center;
+	      gap: 30px;
+	  }
+
+	  .img-caption {
+	      position: relative; /* makes figcaption positioned relative to the image */
+	  }
+
+	  .img-caption figcaption {
+	      position: absolute;  /* overlay on top of image */
+	      bottom: 0;           /* stick to bottom */
+	      left: 50%;           /* center horizontally */
+	      transform: translateX(-50%);
+	      background: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+	      color: white;
+	      padding: 5px 10px;
+	      text-align: center;
+	      width: 100%;         /* span full image width */
+	      box-sizing: border-box;
+	      font-size: 16px;     /* adjust as needed */
+	  }
+	  
+	  
+	  .review-grid {
+	      overflow: hidden;
+	      padding: 30px 0;
+	      width: 100%;
+	      background: #f9f9f9; /* Keep your light background */
+		  position: relative;
+	  }
+
+	 
+	  .review-track {
+	      display: flex;
+	      gap: 25px;
+	      width: max-content;
+/*	      animation: scrollReviews 15s linear infinite;
+*/		will-change: transform;  
+	
+}
+
+/*	   Automatic duplication for smooth infinite scroll 
+	  .review-track::after {
+	      content: '';
+	      display: none;
+	      width: 100%;
+	  }
+*/
+	  /*.review-track:hover {
+	      animation-play-state: paused;  Pause on hover 
+	  }
+	  */
+
+	  .review {
+	      flex: 0 0 300px; /* Card width */
+	      background: #fff;
+	      padding: 25px;
+	      border-radius: 12px;
+	      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+	      text-align: center;
+	      transition: transform 0.3s ease;
+		  margin-right: 25px;
+	  }
+
+	  .review:hover {
+	      transform: translateY(-10px);
+	      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+	  }
+
+	  .review-icon {
+	      font-size: 40px;
+	      color: #128C7E;
+	      margin-bottom: 12px;
+	  }
+
+	  .stars {
+	      margin-bottom: 10px;
+	      font-size: 1.1rem;
+	      color: #ffb400;
+	  }
+
+	  /* Smooth infinite scroll */
+	 /* @keyframes scrollReviews {
+	      0% {
+	          transform: translateX(0);
+	      }
+	      100% {
+			transform: translateX(-50%);
+
+	         transform: translateX(calc(-50% - 12.5px));
+	      }
+	  }*/
+
+	  /* Responsive adjustments */
+	  @media screen and (max-width: 768px) {
+	      .review {
+	          flex: 0 0 250px;
+	          padding: 20px;
+	      }
+	      .review-icon {
+	          font-size: 35px;
+	      }
+	      .stars {
+	          font-size: 1rem;
+	      }
+	  }
+
+/* ===========================================
+   7. ABOUT & CONTACT
+   =========================================== */
+.about img {
+    height: 300px;
+}
+
+.contact {
+    background: #f7f7f7;
+}
+
+.contact-box {
+    background: white;
+    padding: 30px 35px 30px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.contact textarea {
+    height: 120px;
+}
+
+.btn {
+    padding: 12px;
+    background: #128C7E;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* ===========================================
+   8. FOOTER
+   =========================================== */
+footer {
+    background: #128C7E;
+    color: white;
+    padding: 30px 40px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* ===========================================
+   9. MODALS & POPUPS
+   =========================================== */
+.popup-container {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;          
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-box {
+    background: white;
+    padding: 30px;
+    width: 320px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    animation: slideIn 0.5s ease;
+}
+
+.popup-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.popup-submit {
+    width: 100%;
+    padding: 12px;
+    background: #128C7E;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* Success Modal */
+#successModal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#successModal.modal-show { display: flex; }
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(1px);
+}
+
+.modal-panel {
+    position: relative;
+    max-width: 420px;
+    width: 90%;
+    background: #fff;
+    border-radius: 12px;
+    padding: 22px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.swal2-container { z-index: 999999 !important; }
+
+/* ===========================================
+   10. ERROR & MAINTENANCE PAGES
+   =========================================== */
+.page-center-box { max-width: 650px; margin: 80px auto; text-align: center; padding: 20px; }
+.page-big-title { font-size: 60px; font-weight: bold; margin-bottom: 10px; animation: fadeInDown 0.8s ease-in-out; color: #128C7E; }
+.page-subtitle { font-size: 20px; margin-bottom: 20px; color: #444; }
+.page-home-btn { padding: 12px 25px; background: #128C7E; border: none; color: white; border-radius: 8px; cursor: pointer; }
+.page-img { width: 350px; margin-bottom: 18px; animation: popUp 0.7s ease-out; }
+
+/* ===========================================
+   11. ANIMATIONS
+   =========================================== */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { transform: translateY(-60px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-25px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes popUp { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
+
+
+
+
+/*==================================
+12 .
+=================================== */
+
+/* ===========================================
+   Skeleton Loading States
+   =========================================== */
+.skeleton {
+    background: #eee;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: 5px;
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+}
+
+@keyframes shine {
+    to { background-position-x: -200%; }
+}
+
+/* ===========================================
+    Scroll-Triggered Animations (Intersection Observer)
+   =========================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===========================================
+    Dark Mode Support
+   =========================================== */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #222;
+    --section-bg: #f7f7f7;
+}
+
+[data-theme='dark'] {
+    --bg-color: #1a1a1a;
+    --text-color: #f5f5f5;
+    --section-bg: #2d2d2d;
+}
+
+/* Apply variables */
+body { background-color: var(--bg-color); color: var(--text-color); }
+.services, .portfolio, .contact { background: var(--section-bg); }
+
+/* ===========================================
+    Form Validation & Feedback Styles
+   =========================================== */
+input:invalid:not(:placeholder-shown) {
+    border-color: #e63946;
+}
+
+input:valid:not(:placeholder-shown) {
+    border-color: #25D366;
+}
+
+/* Error message style */
+.error-msg {
+    color: #e63946;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* ===========================================
+    Scroll Progress Bar
+   =========================================== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: #25D366;
+    z-index: 1001; /* Higher than top-strip */
+}
+
+/* ===========================================
+Touch-action & Prevent iOS Zoom
+   =========================================== */
+button, a {
+    touch-action: manipulation;
+}
+
+input, button {
+    font-size: 16px; /* Prevents iOS zoom on input focus */
+}
+
+
+
+/* ===========================================
+   RESPONSIVE DESIGN (CLEAN & SAFE)
+   =========================================== */
+
+/* ===== Tablet & Below ===== */
+@media (max-width: 1024px) {
+
+    .top-strip {
+        padding: 15px 40px;
+    }
+
+    .hero {
+        padding: 50px 30px;
+    }
+
+    .hero-left {
+        width: 55%;
+    }
+
+    .hero-form {
+        width: 40%;
+    }
+
+    .service-cards,
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .counter-grid {
+        gap: 10px;
+    }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+
+    /* Global */
+    section {
+        padding: 40px 20px;
+    }
+
+    /* Header */
+    .top-strip {
+        flex-direction: column;
+        padding: 15px 20px;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .header-text {
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Hero */
+    .hero {
+        flex-direction: column;
+        height: auto;
+        padding: 40px 20px;
+        text-align: center;
+        background-size: contain;
+        background-position: top center;
+    }
+
+    .hero-left,
+    .hero-form {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto 20px;
+        text-align: center;
+    }
+
+    .hero-left h1 {
+        font-size: 30px;
+        line-height: 1.3;
+    }
+
+    .hero-left p {
+        font-size: 16px;
+    }
+
+    .btn-outline {
+        width: 100%;
+        display: block;
+        margin: 10px 0;
+    }
+
+    /* Services & Why */
+    .service-cards,
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Trust Counter */
+    .counter-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .counter-number {
+        font-size: 34px;
+    }
+
+    /* Reviews */
+    .review {
+        flex: 0 0 260px;
+    }
+
+    /* About */
+    .flex-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .half {
+        width: 100%;
+    }
+
+    /* Contact */
+    .contact-box {
+        padding: 25px 20px;
+    }
+
+    /* Footer */
+    footer {
+        padding: 20px;
+        font-size: 14px;
+    }
+
+    /* WhatsApp */
+    .whatsapp-sticky {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+/**/
+
+button, a {
+    touch-action: manipulation;
+}
+
+input, button {
+    font-size: 16px; /* Prevents iOS zoom */
+}

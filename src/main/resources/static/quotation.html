@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interior Quotation</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/quotation.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+
+<body>
+
+<header class="top-strip">
+    <div class="logo-container">
+        <img src="/images/LOGO WIGHT BACKGROUND1.png" alt="Comfort Zone Logo" class="logo">
+        <a href="/Homepage.html" class="home-btn">← Back to Home</a>
+    </div>
+</header>
+
+<main>
+    <div class="quotation-container">
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="step-indicator active" id="ind-0">1</div>
+            <div class="step-indicator" id="ind-1">2</div>
+        </div>
+
+		<form id="quotationForm">
+
+		    <!-- STEP 1 -->
+		    <div class="step step-1 active">
+		        <h2>Property Details</h2>
+
+		        <h4>Select Property Type <span class="req">*</span></h4>
+		        <div class="option-group">
+		            <button type="button" class="option" data-value="RESIDENTIAL">Residential</button>
+		            <button type="button" class="option" data-value="COMMERCIAL">Commercial</button>
+		        </div>
+		        <input type="hidden" id="propertyType">
+
+		        <h4>Select City<span class="req">*</span></h4>
+		        <div class="custom-dropdown">
+		            <small class="error-msg" id="propertyError">Please select property type.</small>
+		            <small class="error-msg" id="cityError">Please enter or select a city.</small>
+
+		            <input type="text" id="citySearch" placeholder="Please enter or select a city...." autocomplete="off">
+		            <ul class="city-list" id="cityList">
+		                <li data-city="Mumbai">Mumbai</li>
+		                <li data-city="Pune">Pune</li>
+		                <li data-city="Bangalore">Bangalore</li>
+		                <li data-city="Delhi">Delhi</li>
+		                <li data-city="Hyderabad">Hyderabad</li>
+		            </ul>
+		        </div>
+		        <input type="hidden" id="city">
+
+		        <!-- Residential -->
+		        <div id="resSection" class="unit-section" style="display:none;">
+		            <h4>Select BHK Type<span class="req">*</span></h4>
+		            <div class="unit-options">
+		                <button type="button" class="unit-btn" data-value="1 BHK">1 BHK</button>
+		                <button type="button" class="unit-btn" data-value="2 BHK">2 BHK</button>
+		                <button type="button" class="unit-btn" data-value="3 BHK">3 BHK</button>
+		                <button type="button" class="unit-btn" data-value="4 BHK">4 BHK</button>
+		                <button type="button" class="unit-btn" data-value="Villa">Villa</button>
+		                <button type="button" class="unit-btn" data-value="Other">Other</button>
+		            </div>
+
+		            <!-- Other input -->
+		            <div class="otherUnitWrapper" style="display:none; margin-top:15px;">
+		                <input type="text" class="otherUnitInput" placeholder="Please specify..." />
+		            </div>
+		        </div>
+
+		        <!-- Commercial -->
+		        <div id="commSection" class="unit-section" style="display:none;">
+		            <h4>Select Commercial Type<span class="req">*</span></h4>
+		            <div class="unit-options">
+		                <button type="button" class="unit-btn" data-value="Shop">Shop</button>
+		                <button type="button" class="unit-btn" data-value="Office">Office</button>
+		                <button type="button" class="unit-btn" data-value="Restaurant">Restaurant</button>
+		                <button type="button" class="unit-btn" data-value="Other">Other</button>
+		            </div>
+
+		            <!-- Other input -->
+		            <div class="otherUnitWrapper" style="display:none; margin-top:15px;">
+		                <input type="text" class="otherUnitInput" placeholder="Please specify..." />
+		            </div>
+		        </div>
+
+		        <input type="hidden" id="unitType">
+
+		        <div id="unitError" style="display:none;">
+		            Please select a unit type
+		        </div>
+				
+				<button type="button" class="next-btn" disabled>
+				    Next Step
+				</button>
+
+				</div> 
+				
+            <!-- STEP 2 -->
+            <div class="step step-2">
+                <h2>Contact Information<span class="req">*</span></h2>
+
+				<input type="text" name="name" id="fullName" placeholder="Full Name" required>
+				<input type="text" name="mobile" id="mobile" placeholder="Mobile Number" maxlength="10" required>
+				<input type="email" name="email" id="email" placeholder="Email Address" required>
+                
+				<label class="checkbox-label">
+                    <input type="checkbox" required>
+                    I agree to be contacted
+                </label>
+
+                <div class="btn-group">
+                    <button type="button" class="back-btn">Back</button>
+                    <button type="submit" class="submit-btn">Submit Quotation</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>© Comfort Zone. All Rights Reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/quotation.js" defer></script>
+</body>
+</html>
