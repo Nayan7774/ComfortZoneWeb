@@ -918,11 +918,16 @@ input, button {
     .hero-left h1 {
         font-size: 30px;
         line-height: 1.3;
-    }
+		color:#F5F5DC;
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+
+	}
 
     .hero-left p {
         font-size: 16px;
-    }
+		color:#F5F5DC;
+				text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+		}
 
     .btn-outline {
         width: 100%;
