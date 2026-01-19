@@ -501,6 +501,22 @@ a[href="#our-services"] {
 	      font-size: 16px;     /* adjust as needed */
 	  }
 	  
+	  @media (max-width: 768px) {
+	      .portfolio-grid {
+	          flex-direction: column; /* stack items */
+	          gap: 20px;
+	      }
+
+	      .img-caption {
+	          max-width: 100%; /* full width on mobile */
+	      }
+
+	      .img-caption figcaption {
+	          font-size: 14px;
+	          padding: 6px 8px;
+	      }
+	  }
+	  
 	  
 	  .review-grid {
 	      overflow: hidden;
