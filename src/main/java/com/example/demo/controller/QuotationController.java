@@ -31,7 +31,9 @@ public class QuotationController{
         }
 
         // Removed DB mapping and save
-        
+        try {
+        	
+      
         String msg = "New Quotation Submission:\n" +
                      "Name: " + request.getName() + "\n" +
                      "Mobile: " + request.getMobile() + "\n" +
@@ -47,5 +49,13 @@ public class QuotationController{
 
         // Changed message to "sent" instead of "saved"
         return ResponseEntity.ok(Map.of("status", "success", "message", "Quotation sent successfully"));
+    }
+        catch (Exception e) 
+        {
+    	 return ResponseEntity.internalServerError()
+                 .body(Map.of("status", "error",
+                              "message", "Email service unavailable"));
+	}
+        
     }
 }
