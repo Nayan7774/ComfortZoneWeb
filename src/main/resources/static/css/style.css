@@ -17,8 +17,12 @@
 
 body { 
     margin: 0; 
-    font-family: "Times New Roman", Georgia, Garamond, serif;
-}
+	font-family: Arial, Helvetica, "Liberation Sans", sans-serif;
+
+/*	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+*/	
+/*    font-family: "Times New Roman", Georgia, Garamond, serif;
+*/}
 
 body.modal-open { 
     overflow: hidden; 
@@ -203,7 +207,7 @@ a[href="#our-services"] {
        /* FIX: 'cover' ensures the image fills the 90vh height without gaps */
        /*background-size: contain; */
        
-	  background-size:auto; 
+	  background-size:cover;   /* auto*/
 	      /* background-position: left center;*/
 	   	
        height: 90vh;
@@ -748,7 +752,7 @@ footer {
 /* ===========================================
    Skeleton Loading States
    =========================================== */
-.skeleton {
+/*.skeleton {
     background: #eee;
     background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
     border-radius: 5px;
@@ -758,7 +762,7 @@ footer {
 
 @keyframes shine {
     to { background-position-x: -200%; }
-}
+}*/
 
 /* ===========================================
     Scroll-Triggered Animations (Intersection Observer)
@@ -986,4 +990,21 @@ button, a {
 
 input, button {
     font-size: 16px; /* Prevents iOS zoom */
+}
+
+/*whats app pp up */
+
+/* SweetAlert2 custom buttons */
+.swal-btn-confirm {
+    background-color: #128C7E !important;
+    color: #fff !important;
+    border-radius: 6px !important;
+    padding: 8px 20px !important;
+}
+
+.swal-btn-cancel {
+    background-color: #eee !important;
+    color: #128C7E !important;
+    border-radius: 6px !important;
+    padding: 8px 20px !important;
 }

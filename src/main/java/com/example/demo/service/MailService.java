@@ -11,17 +11,27 @@ public class MailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendMail(String to, String cc,String subject, String text) {
+    // This is the version your Controller is likely calling
+    public void sendMail(String to, String cc, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("nayanmahajan2002@gmail.com");
         message.setTo(to);
         message.setCc(cc);
         message.setSubject(subject);
         message.setText(text);
+        
         mailSender.send(message);
     }
 
-	public void sendMail(String string, String subject, String body) {
-		// TODO Auto-generated method stub
-		
-	}
+    // This version handles multiple CC recipients (3+)
+    public void sendMail(String to, String[] ccList, String subject, String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("nayanmahajan2002@gmail.com");
+        message.setTo(to);
+        message.setCc(ccList); 
+        message.setSubject(subject);
+        message.setText(text);
+        
+        mailSender.send(message);
+    }
 }

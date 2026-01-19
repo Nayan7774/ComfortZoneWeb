@@ -249,13 +249,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		// **********db connection******************	 //
 		
 		
-		fetch("/quotation/submit", {
+		fetch("/api/submitQuotation", {
 		    method: "POST",
-		    headers: {
-		        "Content-Type": "application/json"
-		    },
+		    headers: { "Content-Type": "application/json" },
 		    body: JSON.stringify(payload)
 		})
+
 		.then(response => {
 		    if (!response.ok) throw new Error("Failed");
 		    return response.json();

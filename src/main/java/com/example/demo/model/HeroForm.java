@@ -1,18 +1,13 @@
 package com.example.demo.model;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-@Entity
-@Table(name = "hero_form")
+// Removed @Entity and @Table
 public class HeroForm {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    
+    // Removed @Id and @GeneratedValue
+    private Long id; 
     
     @NotBlank(message = "Name is required")
     private String name;
@@ -28,19 +23,18 @@ public class HeroForm {
         this.contact = contact;
     }
 
+    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     
     public String getName() { return name; }
-    public String getContact() { return contact; }
-
     public void setName(String name) { this.name = name; }
 
-    
+    public String getContact() { return contact; }
     public void setContact(String contact) { this.contact = contact; }
 
-	@Override
-	public String toString() {
-		return "HeroForm [id=" + id + ", name=" + name + ", contact=" + contact + "]";
-	}
+    @Override
+    public String toString() {
+        return "HeroForm [id=" + id + ", name=" + name + ", contact=" + contact + "]";
+    }
 }

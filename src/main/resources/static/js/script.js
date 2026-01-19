@@ -289,5 +289,59 @@ window.addEventListener("scroll", () => {
 	   }
 
 	   animateReviews();
-	
 });
+
+
+// WhatsApp number hidden in JS
+// WhatsApp number hidden in JS
+const whatsappNumber = "9112006636";   //9529769417
+
+// Select the sticky button
+const whatsappLink = document.getElementById("whatsapp-link");
+
+whatsappLink.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    Swal.fire({
+        title: 'Choose Service',
+        text: "Which Interior design service are you interested in?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Residential',
+        cancelButtonText: 'Commercial',
+        reverseButtons: true,
+        focusConfirm: false,
+        customClass: {
+            confirmButton: 'swal-btn-confirm',
+            cancelButton: 'swal-btn-cancel'
+        }
+    }).then((result) => {
+        let message = "";
+
+        if (result.isConfirmed) {
+            message = "Hi! I’m interested in Residential Interior design services.";
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            message = "Hi! I’m interested in Commercial Interior design services.";
+        } else {
+            return; // User closed the popup
+        }
+
+        // Open WhatsApp with pre-filled message
+        const url = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
+        window.open(url, "_blank");
+    });
+});
+
+
+
+// WhatsApp number
+/*
+const whatsappNumber = "1144558877";  // hidden in JS
+const prefilledMessage = encodeURIComponent("Hi! I want to get a consultation for decorating my home. Can we schedule a call or visit?."); 
+
+// Set the href dynamically
+
+const whatsappLink = document.getElementById("whatsapp-link");
+whatsappLink.href = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${prefilledMessage}`;
+
+*/
