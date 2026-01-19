@@ -237,51 +237,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	    /* ===== PREVENT FOOTER JUMP ===== */
 		lockBodyScroll();
-		const payload = {
-		    propertyType: propertyTypeInput.value,
-		    city: cityInput.value,
-		    unitType: unitTypeInput.value,
-		    name: name,
-		    mobile: mobile,
-		    email: email
-		};
 
-		// **********db connection******************	 //
-		
-		
-		fetch("/api/submitQuotation", {
-		    method: "POST",
-		    headers: { "Content-Type": "application/json" },
-		    body: JSON.stringify(payload)
-		})
+				// Form submission
+				document.getElementById("quotationForm").addEventListener("submit", function (e) {
+				    e.preventDefault(); // prevent default form submission
 
-		.then(response => {
-		    if (!response.ok) throw new Error("Failed");
-		    return response.json();
-		})
-		.then(res => {
-		    Swal.fire({
-		        icon: "success",
-		        title: "Quotation Submitted 🎉",
-		        text: "Our team will contact you shortly.",
-		        confirmButtonColor: "#128C7E"
-		    }).then(() => location.reload());
-		})
-		.catch(() => {
-		    Swal.fire({
-		        icon: "error",
-		        title: "Submission Failed",
-		        text: "Please try again later.",
-		        confirmButtonColor: "#128C7E"
-		    });
-		});	
-		
-		
-		
-		document.getElementById("mobile").addEventListener("input", function () {
-	    this.value = this.value.replace(/\D/g, "").slice(0, 10);
-	});
-	});
+				    const payload = {
+				        name: document.getElementById("fullName").value,
+				        mobile: document.getElementById("mobile").value,
+				        email: document.getElementById("email").value,
+				        propertyType: document.getElementById("propertyType").value,
+				        city: document.getElementById("city").value,
+				        unitType: document.getElementById("unitType").value
+				    };
 
-	
-});
+				    console.log("FORM SUBMITTED – JS HANDLER WORKING", payload);
+
+					fetch("http://localhost:8080/api/submitQuotation", { 
+					    method: "POST",
+					    headers: { "Content-Type": "application/json" },
+					    body: JSON.stringify(payload)
+					})
+				    .then(response => {
+				        if (!response.ok) {
+				            return response.json().then(err => { throw err; });
+				        }
+				        return response.json();
+				    })
+				    .then(data => {
+				        console.log("Response:", data);
+				        Swal.fire({
+				            icon: "success",
+				            title: "Quotation Submitted 🎉",
+				            text: data.message || "Our team will contact you shortly.",
+				            confirmButtonColor: "#128C7E"
+				        }).then(() => location.reload());
+				    })
+				    .catch(error => {
+				        console.error("Error:", error);
+				        Swal.fire({
+				            icon: "error",
+				            title: "Submission Failed",
+				            text: error.message || "Please try again later.",
+				            confirmButtonColor: "#128C7E"
+				        });
+				    });
+				});
+
+				// Mobile number input validation
+				document.getElementById("mobile").addEventListener("input", function () {
+				    // Only digits, max 10
+				    this.value = this.value.replace(/\D/g, "").slice(0, 10);
+				});
+		});
+		});
