@@ -18,6 +18,12 @@ import jakarta.validation.Valid;
 @RequestMapping("/api")
 public class HomeController {
 
+	 @GetMapping("/")
+	    public String index() {
+	        return "index.html";
+	    }
+	
+	
     @Autowired
     private MailService mailService;
 
