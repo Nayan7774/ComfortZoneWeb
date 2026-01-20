@@ -253,7 +253,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 				    console.log("FORM SUBMITTED – JS HANDLER WORKING", payload);
 
-					fetch("http://localhost:8080/api/submitQuotation", { 
+					fetch(`${window.location.origin}/api/submitQuotation`, {
+
 					    method: "POST",
 					    headers: { "Content-Type": "application/json" },
 					    body: JSON.stringify(payload)
