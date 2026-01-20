@@ -1,74 +1,50 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.ContactForm;
-import com.example.demo.model.HeroForm;
 import com.example.demo.service.MailService;
-
-import jakarta.validation.Valid;
-
+import com.example.demo.model.HeroForm;
+import com.example.demo.model.ContactForm;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
 public class HomeController {
 
-    private final MailService mailService;
+    @Autowired
+    private MailService mailService;
 
-    public HomeController(MailService mailService) {
-        this.mailService = mailService;
-    }
+    @Value("${admin.mail.to}")
+    private String adminTo;
+
+    @Value("${admin.mail.cc}")
+    private String adminCc;
 
     @PostMapping("/submitHero")
     public ResponseEntity<?> submitHero(@Valid @RequestBody HeroForm hero) {
-        try {
-            String subject = "New Enquiry Form Submission";
-            String body = "New Enquiry on website:\nName: " + hero.getName() +
-                    "\nContact: " + hero.getContact();
-
-            mailService.sendMail("comfortzone.ss24@gmail.com", "nayanmahajan2002@gmail.com", subject, body);
-            return ResponseEntity.ok(Map.of("status", "success", "message", "Hero form sent successfully"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.internalServerError()
-                    .body(Map.of("status", "error", "message", "Email service unavailable"));
-        }
+        String msg = "New Enquiry:\nName: " + hero.getName() + "\nContact: " + hero.getContact();
+        mailService.sendMail(adminTo, adminCc, "New Hero Form Submission", msg);
+        return ResponseEntity.ok("Sent successfully");
     }
 
     @PostMapping("/popupSubmit")
     public ResponseEntity<?> popupSubmit(@Valid @RequestBody HeroForm hero) {
-        try {
-            String subject = "New Popup Form Submission";
-            String body = "New Enquiry on website:\nName: " + hero.getName() +
-                    "\nContact: " + hero.getContact();
-
-            mailService.sendMail("comfortzone.ss24@gmail.com", "nayanmahajan2002@gmail.com", subject, body);
-            return ResponseEntity.ok(Map.of("status", "success", "message", "Popup form sent successfully"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.internalServerError()
-                    .body(Map.of("status", "error", "message", "Email service unavailable"));
-        }
+        String msg = "New Enquiry (Popup):\nName: " + hero.getName() + "\nContact: " + hero.getContact();
+        mailService.sendMail(adminTo, adminCc, "Popup Form Submission", msg);
+        return ResponseEntity.ok("Sent successfully");
     }
 
     @PostMapping("/contact")
     public ResponseEntity<?> submitContact(@Valid @RequestBody ContactForm contact) {
-        try {
-            String subject = "New Contact Form Submission";
-            String body = "New Contact Form Submission:\nName: " + contact.getName() +
-                    "\nEmail: " + contact.getEmail() +
-                    "\nPhone: " + contact.getPhone() +
-                    "\nMessage: " + contact.getMessage();
-
-            mailService.sendMail("comfortzone.ss24@gmail.com", "nayanmahajan2002@gmail.com", subject, body);
-            return ResponseEntity.ok(Map.of("status", "success", "message", "Contact form sent successfully"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.internalServerError()
-                    .body(Map.of("status", "error", "message", "Email service unavailable"));
-        }
+        String msg = "New Contact Form:\nName: " + contact.getName() +
+                     "\nEmail: " + contact.getEmail() +
+                     "\nPhone: " + contact.getPhone() +
+                     "\nMessage: " + contact.getMessage();
+        mailService.sendMail(adminTo, adminCc, "Contact Form Submission", msg);
+        return ResponseEntity.ok("Sent successfully");
     }
 }

@@ -3,7 +3,6 @@ package com.example.demo.service;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,27 +17,40 @@ public class MailService {
         this.mailSender = mailSender;
     }
 
-    // Send mail with single CC
-    @Async
+    // Single CC
     public void sendMail(String to, String cc, String subject, String text) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(fromEmail);
-        message.setTo(to);
-        message.setCc(cc);
-        message.setSubject(subject);
-        message.setText(text);
-        mailSender.send(message);
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom(fromEmail);
+            message.setTo(to);
+            if(cc != null && !cc.isEmpty()) message.setCc(cc);
+            message.setSubject(subject);
+            message.setText(text);
+            mailSender.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to send email", e);
+        }
     }
 
-    // Send mail with multiple CCs
-    @Async
+    // Multiple CCs (comma-separated)
+    public void sendMail1(String to, String ccListString, String subject, String text) {
+        String[] ccList = ccListString != null ? ccListString.split(",") : new String[]{};
+        sendMail(to, ccList, subject, text);
+    }
+
     public void sendMail(String to, String[] ccList, String subject, String text) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(fromEmail);
-        message.setTo(to);
-        message.setCc(ccList);
-        message.setSubject(subject);
-        message.setText(text);
-        mailSender.send(message);
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom(fromEmail);
+            message.setTo(to);
+            if(ccList != null && ccList.length > 0) message.setCc(ccList);
+            message.setSubject(subject);
+            message.setText(text);
+            mailSender.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to send email", e);
+        }
     }
 }
