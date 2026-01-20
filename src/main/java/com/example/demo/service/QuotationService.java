@@ -1,45 +1,37 @@
 package com.example.demo.service;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 import com.example.demo.model.QuotationRequest;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
+
 @Service
 public class QuotationService {
 
     private final MailService mailService;
+    private final String mainAdmin;
+    private final String[] ccList;
 
-    @Value("${admin.mail.to}")
-    private String adminTo;
-
-    @Value("${admin.mail.cc}")
-    private String[] adminCc;
-
-    public QuotationService(MailService mailService) {
+    public QuotationService(MailService mailService,
+                            @Value("${admin.mail.to}") String mainAdmin,
+                            @Value("${admin.mail.cc}") String[] ccList) {
         this.mailService = mailService;
+        this.mainAdmin = mainAdmin;
+        this.ccList = ccList;
     }
 
+    // Async email sending prevents blocking your API
+    @Async
     public void processQuotation(QuotationRequest q) {
-
         String subject = "New Quotation Submitted";
+        String body = "A new quotation has been submitted:\n\n" +
+                "Property Type: " + q.getPropertyType() + "\n" +
+                "City: " + q.getCity() + "\n" +
+                "Unit Type: " + q.getUnitType() + "\n" +
+                "Name: " + q.getName() + "\n" +
+                "Mobile: " + q.getMobile() + "\n" +
+                "Email: " + q.getEmail();
 
-        String body = """
-                A new quotation has been submitted:
-
-                Name: %s
-                Mobile: %s
-                Email: %s
-                Property Type: %s
-                City: %s
-                Unit Type: %s
-                """.formatted(
-                    q.getName(),
-                    q.getMobile(),
-                    q.getEmail(),
-                    q.getPropertyType(),
-                    q.getCity(),
-                    q.getUnitType()
-                );
-
-        mailService.sendMail(adminTo, adminCc, subject, body);
+        mailService.sendMail(mainAdmin, ccList, subject, body);
     }
 }
