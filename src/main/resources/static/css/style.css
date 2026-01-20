@@ -518,31 +518,34 @@ a[href="#our-services"] {
 	  }*/
 	  
 	  
+
 	  /* ===========================================
-	     6. PORTFOLIO & REVIEWS
+	     6. PORTFOLIO & REVIEWS (FIXED RESPONSIVE)
 	     =========================================== */
 	  .portfolio {
 	      background: #f7f7f7;
+	      padding: 60px 20px; /* consistent padding */
 	  }
 
 	  .portfolio-grid {
 	      display: flex;
 	      justify-content: center;
-	      align-items: stretch;
-	      gap: 30px;
-	      flex-wrap: wrap; /* FIX: allow wrapping on tablet */
+	      flex-wrap: wrap; /* wrap on smaller screens */
+	      gap: 15px; /* reduced gap for mobile */
+	      margin: 0 auto;
 	  }
 
 	  .img-caption {
 	      position: relative;
 	      width: 100%;
-	      max-width: 480px; /* FIX: prevent oversized images */
+	      max-width: 480px; /* Desktop limit */
+	      flex: 1 1 100%; /* make each image take full width on mobile */
 	  }
 
 	  .img-caption img {
 	      width: 100%;
-	      height: 300px; /* FIX: consistent preview size */
-	      object-fit: cover; /* FIX: prevent distortion */
+	      height: auto; /* FIX: preserve aspect ratio */
+	      object-fit: cover;
 	      border-radius: 10px;
 	      display: block;
 	  }
@@ -550,48 +553,48 @@ a[href="#our-services"] {
 	  .img-caption figcaption {
 	      position: absolute;
 	      bottom: 0;
-	      left: 50%;
-	      transform: translateX(-50%);
-	      background: rgba(0, 0, 0, 0.55);
-	      color: white;
-	      padding: 8px 12px;
-	      text-align: center;
+	      left: 0;
 	      width: 100%;
-	      box-sizing: border-box;
+	      text-align: center;
+	      background: rgba(0, 0, 0, 0.55);
+	      color: #fff;
+	      padding: 6px 10px;
 	      font-size: 16px;
 	      border-radius: 0 0 10px 10px;
 	  }
 
-	  /* ===== Tablet ===== */
+	  /* Tablet */
 	  @media (max-width: 1024px) {
-	      .portfolio-grid {
-	          gap: 20px;
+	      .img-caption {
+	          max-width: 45%; /* two columns */
 	      }
 
 	      .img-caption img {
-	          height: 260px; /* FIX */
+	          height: auto;
 	      }
 	  }
 
-	  /* ===== Mobile ===== */
+	  /* Mobile */
 	  @media (max-width: 768px) {
-
 	      .portfolio-grid {
-	          flex-direction: column;
-	          align-items: center;
+	          gap: 10px;
 	      }
 
 	      .img-caption {
-	          max-width: 100%;
+	          max-width: 100%; /* full width */
+	          flex: 1 1 100%;
+	          padding: 0; /* remove extra space */
 	      }
 
 	      .img-caption img {
-	          height: 220px; /* FIX: better mobile fit */
+	          width: 100%;
+	          height: auto; /* scale image properly */
+	          object-fit: contain; /* show full image without cropping */
 	      }
 
 	      .img-caption figcaption {
 	          font-size: 14px;
-	          padding: 6px 10px;
+	          padding: 4px 6px;
 	      }
 	  }
 
