@@ -15,7 +15,51 @@ document.addEventListener("DOMContentLoaded", () => {
      * @param {HTMLFormElement} formElement - The form to reset
      * @param {HTMLElement} popupElement - Optional popup to close
      */
-    async function submitFormData(data, endpoint, formElement, popupElement = null) {
+	
+	// new updated js submit form data
+	async function submitFormData(data, endpoint, formElement, popupElement = null) {
+	    try {
+	        const response = await fetch(endpoint, {
+	            method: "POST",
+	            headers: { "Content-Type": "application/json" },
+	            body: JSON.stringify(data)
+	        });
+
+	        if (!response.ok) {
+	            const errText = await response.text();
+	            throw new Error(errText || `HTTP ${response.status}`);
+	        }
+
+	        if (popupElement) popupElement.style.display = "none";
+
+	        Swal.fire({
+	            title: "Success!",
+	            text: "Thank you! We will contact you soon.",
+	            icon: "success",
+	            confirmButtonColor: THEME_COLOR
+	        });
+
+	        formElement.reset();
+
+	    } catch (error) {
+	        console.error("Form submit failed:", error);
+
+	        if (popupElement) popupElement.style.display = "none";
+
+	        Swal.fire({
+	            icon: "error",
+	            title: "Server Error",
+	            text: "Something went wrong. Please try again later.",
+	            confirmButtonColor: THEME_COLOR
+	        });
+	    }
+	}
+
+	
+	
+   /*
+   	old js 
+   async function submitFormData(data, endpoint, formElement, popupElement = null) {
         try {
             await fetch(endpoint, {
                 method: "POST",
@@ -46,8 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 confirmButtonColor: THEME_COLOR
             });
         }
-    }
-
+    } 
+*/
     // ---------------------------------------------------
     // 2. HERO FORM SUBMISSION
     // ---------------------------------------------------

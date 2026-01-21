@@ -254,17 +254,17 @@ document.addEventListener("DOMContentLoaded", () => {
 				    console.log("FORM SUBMITTED – JS HANDLER WORKING", payload);
 
 					fetch(`${window.location.origin}/api/submitQuotation`, {
-
 					    method: "POST",
 					    headers: { "Content-Type": "application/json" },
 					    body: JSON.stringify(payload)
 					})
-				    .then(response => {
-				        if (!response.ok) {
-				            return response.json().then(err => { throw err; });
-				        }
-				        return response.json();
-				    })
+					.then(async response => {
+					    if (!response.ok) {
+					        const errText = await response.text();
+					        throw new Error(errText || `HTTP ${response.status}`);
+					    }
+					    return response.json();
+					})
 				    .then(data => {
 				        console.log("Response:", data);
 				        Swal.fire({
