@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Pattern;
 public class ContactForm {
 
     // Removed @Id and @GeneratedValue because we aren't saving to a DB
-    private Long id; 
+    private Long id;  
 
     @NotBlank(message = "Name is required")
     private String name;
