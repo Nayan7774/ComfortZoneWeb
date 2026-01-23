@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Quotations</title>
+    <link rel="stylesheet" href="/css/quotation.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #128C7E;
+            color: #fff;
+        }
+        .logout-btn {
+            background-color: #128C7E;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            float: right;
+            margin-top: 10px;
+        }
+        .logout-btn:hover { background-color: #0f6f64; }
+    </style>
+</head>
+<body>
+    <div class="quotation-container">
+        <h2>Admin Panel - Quotations</h2>
+        <button class="logout-btn" id="logoutBtn">Logout</button>
+
+        <table id="quotationTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Property Type</th>
+                    <th>City</th>
+                    <th>Unit Type</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>Submitted At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be inserted here via JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="/js/admin-panel.js"></script>
+</body>
+</html>
