@@ -24,17 +24,22 @@ public class HomeController {
 
     public HomeController(
             MailService mailService,
-            @Value("${app.admin.email}") String adminTo,
-            @Value("${app.admin.cc}") String adminCc) {
-
+            @Value("${app.admin.email}") String mainAdmin, 
+            @Value("${app.admin.cc}") String ccValue) {
+		
+    	/*
+		 * @Value("${app.admin.email}") String adminTo,
+		 * 
+		 * @Value("${app.admin.cc}") String adminCc) {
+		 */
         this.mailService = mailService;
-        this.adminTo = adminTo;
+        this.adminTo = mainAdmin;
         
         // Safety check: ensure we don't pass empty strings to the mailer
-        if (adminCc == null || adminCc.isBlank()) {
+        if (ccValue == null || ccValue.isBlank()) {
             this.adminCc = new String[0];
         } else {
-            this.adminCc = Arrays.stream(adminCc.split(","))
+            this.adminCc = Arrays.stream(ccValue.split(","))
                                  .map(String::trim)
                                  .filter(s -> !s.isEmpty())
                                  .toArray(String[]::new);

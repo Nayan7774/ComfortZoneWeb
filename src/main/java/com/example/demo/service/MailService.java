@@ -23,9 +23,8 @@ public class MailService {
     @Value("${gmail.refresh-token}") private String refreshToken;
     @Value("${gmail.email}") private String fromEmail;
 
-    @Value("${mail.target.to}") String mainAdmin; 
-    @Value("${mail.target.cc}") String ccValue;
-    
+    @Value("${app.admin.email}") String mainAdmin; 
+    @Value("${app.admin.cc}") String ccValue;
 	
     public void sendMail(String to, String[] cc, String subject, String bodyText) {
         try {

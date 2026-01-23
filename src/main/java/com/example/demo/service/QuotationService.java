@@ -15,8 +15,8 @@ public class QuotationService {
 
     public QuotationService(
             MailService mailService,
-            @Value("${mail.target.to}") String mainAdmin, 
-            @Value("${mail.target.cc}") String ccValue) {
+            @Value("${app.admin.email}") String mainAdmin, 
+            @Value("${app.admin.cc}") String ccValue){
 
         this.mailService = mailService;
         this.mainAdmin = mainAdmin;
