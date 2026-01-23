@@ -78,20 +78,3 @@ public class MailService {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

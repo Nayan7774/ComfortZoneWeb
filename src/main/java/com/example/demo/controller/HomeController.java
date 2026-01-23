@@ -4,14 +4,13 @@ import com.example.demo.model.ContactForm;
 import com.example.demo.model.HeroForm;
 import com.example.demo.service.MailService;
 
-import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
+import java.util.Arrays;
 import java.util.Map;
 
 @RestController
@@ -30,11 +29,18 @@ public class HomeController {
 
         this.mailService = mailService;
         this.adminTo = adminTo;
-        this.adminCc = adminCc != null && !adminCc.isBlank()
-                ? adminCc.split(",")
-                : new String[0];
+        
+        // Safety check: ensure we don't pass empty strings to the mailer
+        if (adminCc == null || adminCc.isBlank()) {
+            this.adminCc = new String[0];
+        } else {
+            this.adminCc = Arrays.stream(adminCc.split(","))
+                                 .map(String::trim)
+                                 .filter(s -> !s.isEmpty())
+                                 .toArray(String[]::new);
+        }
     }
-
+    
     @PostMapping("/submitHero")
     public ResponseEntity<?> submitHero(@Valid @RequestBody HeroForm hero) {
 
