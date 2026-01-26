@@ -1,5 +1,4 @@
 
-
    
    *,
    *::before,
@@ -276,7 +275,7 @@ a[href="#our-services"] {
  }
 .btn-text { background: transparent; color: #128C7E; text-decoration: underline; }
 
-.hero-form {
+/*.hero-form {
     width: 25%;
     background: rgba(255, 255, 255, 0.95);    
     padding: 30px 25px; 
@@ -285,7 +284,20 @@ a[href="#our-services"] {
     margin-top: 40px;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
     box-sizing: border-box; 
+}*/
+
+.hero-form {
+    width: 25%;
+    background: rgba(255, 255, 255, 0.95);    
+    padding: 30px 25px; 
+    border-radius: 12px;
+    color: black;
+    margin-top: 40px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    box-sizing: border-box; 
+    backdrop-filter: blur(10px);
 }
+
 
 .hero-form input, 
 .hero-form button {
@@ -521,7 +533,6 @@ a[href="#our-services"] {
 	  }*/
 	  
 	  
-
 	  /* ===========================================
 	     6. PORTFOLIO & REVIEWS (FIXED RESPONSIVE)
 	     =========================================== */
@@ -601,7 +612,6 @@ a[href="#our-services"] {
 	      }
 	  }
 
-	  
 	  
 	  
 	  
@@ -1116,3 +1126,136 @@ input, button {
     border-radius: 6px !important;
     padding: 8px 20px !important;
 }
+	
+	
+	
+	
+	/* ===============================
+	   VISIBILITY CONTROL
+	   =============================== */
+	   /* ===============================
+	      VISIBILITY CONTROL
+	      =============================== */
+	
+	   /* Default: hide mobile-only sections */
+	   .mobile-only { 
+	       display: none; 
+	   }
+	
+	   /* Show mobile-only sections only on very small screens */
+	   @media (max-width: 480px) {  /* small phones only */
+	       .mobile-only {
+	           display: block !important;
+	       }
+	   }
+	
+	   /* Desktop and tablets (≥481px) */
+	   @media (min-width: 481px) {
+	       .mobile-only {
+	           display: none !important;
+	       }
+	   }
+	
+	   /* Desktop-only sections (optional, stays the same) */
+	   .desktop-only {
+	       display: block;
+	   }
+	
+	   @media (max-width: 480px) {
+	       .desktop-only {
+	           display: none !important;
+	       }
+	   }
+	
+	/* ===============================
+	   MOBILE HERO IMAGE ONLY
+	   =============================== */
+	   
+	   @media (max-width: 768px) {
+	       .top-strip img {
+	           height: 50px; /* smaller for mobile */
+	       }
+	   }
+
+	   /* Optional: even smaller for very small screens */
+	   @media (max-width: 480px) {
+	       .top-strip img {
+	           height: 40px;
+	       }
+	   }
+	   
+	   
+	   
+	   
+	@media (max-width: 768px) {
+	
+	    .hero-left {
+	        display: none;
+	    }
+	
+	    .hero {
+	        height: auto;
+	        min-height: 360px;
+	        background-position: center top;
+	        background-repeat: no-repeat;
+	        background-size: cover; /* avoid gaps */
+	        padding: 0;
+	    }
+	}
+	
+	/* ===============================
+	   MOBILE CTA
+	   =============================== */
+	.mobile-cta {
+	    text-align: center;
+	    padding: 24px 20px;
+	}
+	
+	.mobile-cta .btn-outline {
+	    width: 100%;
+	    max-width: 360px;
+	    margin: 0 auto 16px;
+	    display: block;
+	}
+	
+	/* ===============================
+	   MOBILE FORM
+	  =============================== */
+	  /* Mobile form styling (same as hero-form) */
+	  .mobile-form form {
+	      max-width: 420px;
+	      margin: 0 auto;
+	      background: rgba(255, 255, 255, 0.95);
+	      padding: 25px 20px;
+	      border-radius: 12px;
+	      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+	      color: black;
+	      box-sizing: border-box;
+	      backdrop-filter: blur(10px);
+	  }
+
+	  .mobile-form form input,
+	  .mobile-form form button {
+	      width: 100%;
+	      padding: 12px;
+	      margin-bottom: 15px;
+	      border-radius: 12px;
+	      font-size: 18px;
+	      line-height: 1.5;
+	      display: block;
+	      box-sizing: border-box;
+	  }
+
+	  .mobile-form form input:focus {
+	      outline: none;
+	      border: 2px solid #128C7E;
+	      box-shadow: 0 0 5px rgba(18, 140, 126, 0.3);
+	  }
+
+	  .mobile-form form button {
+	      background: #128C7E;
+	      border: 1px solid #128C7E;
+	      color: white;
+	      cursor: pointer;
+	      font-weight: bold;
+	  }

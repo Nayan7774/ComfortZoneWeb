@@ -15,8 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/script.js" defer></script>
 	
-	<link rel="preload" 
-		as="image"
+	<link rel="preload" as="image"
 	      href="/images/New images/resize living room set lights off.651.jpg">
 	
 </head>
@@ -33,7 +32,7 @@
 	    </div>
 	    
 	    <div class="header-text">
-	        <p class="tagline">Premium Commercial & Residential Interiors</p>
+	        <p class="tagline">Commercial & Residential Interior</p>
 	        <p class="promo-badge">Full room layout starts from <span>₹700</span></p>
 	        
 	        <div class="header-action">
@@ -43,45 +42,59 @@
 	        </div>
 	    </div>
 	</header>
+	<!-- Desktop Hero Section -->
+	<section class="hero">
+	    <div class="hero-left">
+	        <h1>Commercial & Residential Interior</h1>
+	        <p>Get instant layout, design, consultation, or full project execution – tailored for your space.</p>
+	        <div class="cta-buttons">
+	            <button class="btn-outline" onclick="window.location.href='quotation.html'">Get Free Quotation</button>
+	            <a href="#our-services">
+	                <button class="btn-outline">Explore Services</button>
+	            </a>
+	        </div>
+	    </div>
+
+	    <div class="hero-form desktop-only">
+	        <form id="heroForm">
+	            <h2>Start Your Interior Project Today</h2>
+	            <p>Fill your details & our team will contact you within 24 hours.</p>
+	            <input id="heroName" type="text" placeholder="Name" required>
+	            <input id="heroContact" type="text" placeholder="Contact Number" required>
+	            <button type="submit">Submit Request</button>
+	        </form>
+	    </div>
+	</section>
+
+	<!-- MOBILE ONLY CTA -->
+	<section class="mobile-cta mobile-only">
+	    <button class="btn-outline" onclick="window.location.href='quotation.html'">Get Free Quotation</button>
+	    <a href="#our-services">
+	        <button class="btn-outline">Explore Services</button>
+	    </a>
+	</section>
+
+	<!-- MOBILE ONLY FORM -->
+	<!-- MOBILE ONLY FORM -->
 	
-    <section class="hero">
-        <div class="hero-left">
-            <h1>Commercial & Residential Interior</h1>
-            <p>Get instant layout, design, consultation, or full project execution – tailored for your space.</p>
-            
-          
-			  <div class="cta-buttons">
-               <!-- <button class="btn-primary" id="goQuote">Get Free Quotation</button>  -->
-				<button class="btn-outline" onclick="window.location.href='quotation.html'">Get Free Quotation </button>
+	<section class="mobile-form mobile-only">
+	    <form>
+	        <h2>Start Your Interior Project Today</h2>
+	        <p>Fill your details & our team will contact you.</p>
+	        <input type="text" placeholder="Name" required>
+	        <input type="text" placeholder="Contact Number" required>
+	        <button type="submit">Submit Request</button>
+	    </form>
+	</section>
 
-            
-                
-               <!--<button class="btn-outline" onclick="window.location.href='maintenance.html'">Book a Visit</button> -->
-			   <a href="#our-services">
-			       <button class="btn-outline">Explore Services</button>
-			   </a>
-            </div>
-        </div>
 
-        <div class="hero-form">
-            <form id="heroForm">
-                <h2>Get Started Today</h2>
-                <p>Fill your details & our team will contact you within 24 hours.</p>
-
-                <input id="heroName" type="text" placeholder="Name" required>
-                <input id="heroContact" type="text" placeholder="Contact Number" required>
-
-                <button type="submit">Submit Request</button>
-            </form>
-        </div>
-    </section>
 
     <section class="services" id="our-services">
         <h2>Our Services</h2>
         <div class="service-cards">
             <div class="card">
                 <div class="icon"><i class="fas fa-calendar-check"></i></div> 
-                <h3>Visit Booking</h3>
+                <h3>Site Visit Booking</h3>
                 <p>Schedule an on-site visit from our design expert.</p>
             </div>
 
@@ -147,7 +160,7 @@
 
 
     <section class="why">
-        <h2>Why Clients Trust Us</h2>
+        <h2>Excellence in Every Detail</h2>
         <div class="why-grid">
             <div class="why-item">
                 <div class="icon"><i class="fas fa-file-invoice-dollar"></i></div>
@@ -215,7 +228,9 @@
 	            <div class="review">
 	                <i class="fas fa-user-circle review-icon"></i>
 	                <div class="stars">⭐⭐⭐⭐⭐</div>
-	                <p>I was worried an interior designer was a luxury I didn't need, but they actually saved me money. Their trade discounts and help in avoiding 'expensive mistakes' more than paid for the fee. Plus, our home appraisal came back way higher than expected!</p>
+	                <p>I was worried an interior designer was a luxury I didn't need,
+						 but they actually saved me money. Their trade discounts and help in avoiding 'expensive mistakes' 
+						more than paid for the fee. Plus, our home appraisal came back way higher than expected!</p>
 	                <strong>—Nayan Mahajan</strong>
 	            </div>
 	            <div class="review">
@@ -235,7 +250,7 @@
 	         <div class="review">
 	                <i class="fas fa-user-circle review-icon"></i>
 	                <div class="stars">⭐⭐⭐⭐⭐</div>
-	                <p>Professional from start to finish. Loved the final execution!</p>
+	                <p>Exceptional design and timely delivery. Our office space looks amazing!</p>
 	                <strong>— Ritika Shah</strong>
 	            </div>
 	            <div class="review">
@@ -302,7 +317,7 @@
     <div id="scrollPopup" class="popup-container">
         <div class="popup-box">
             <button id="popupCloseBtn" class="popup-close">×</button>
-            <h2>Get Started Today</h2>
+            <h2>Start Your Interior Project Today</h2>
             <p>Fill your details & our team will contact you soon.</p>
             <form id="popupForm">
                 <input id="popupName" type="text" placeholder="Name" required>
@@ -320,8 +335,3 @@
 </body>
 </html>
 
-
-<!--
-I have a Java Spring Boot project with plain HTML/JS/CSS frontend, MySQL locally, and you want to deploy it on a free hosting platform. please guide you step by step.
-
--->

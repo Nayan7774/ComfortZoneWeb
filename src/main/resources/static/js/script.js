@@ -15,51 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
      * @param {HTMLFormElement} formElement - The form to reset
      * @param {HTMLElement} popupElement - Optional popup to close
      */
-	
-	// new updated js submit form data
-	async function submitFormData(data, endpoint, formElement, popupElement = null) {
-	    try {
-	        const response = await fetch(endpoint, {
-	            method: "POST",
-	            headers: { "Content-Type": "application/json" },
-	            body: JSON.stringify(data)
-	        });
-
-	        if (!response.ok) {
-	            const errText = await response.text();
-	            throw new Error(errText || `HTTP ${response.status}`);
-	        }
-
-	        if (popupElement) popupElement.style.display = "none";
-
-	        Swal.fire({
-	            title: "Success!",
-	            text: "Thank you! We will contact you soon.",
-	            icon: "success",
-	            confirmButtonColor: THEME_COLOR
-	        });
-
-	        formElement.reset();
-
-	    } catch (error) {
-	        console.error("Form submit failed:", error);
-
-	        if (popupElement) popupElement.style.display = "none";
-
-	        Swal.fire({
-	            icon: "error",
-	            title: "Server Error",
-	            text: "Something went wrong. Please try again later.",
-	            confirmButtonColor: THEME_COLOR
-	        });
-	    }
-	}
-
-	
-	
-   /*
-   	old js 
-   async function submitFormData(data, endpoint, formElement, popupElement = null) {
+    async function submitFormData(data, endpoint, formElement, popupElement = null) {
         try {
             await fetch(endpoint, {
                 method: "POST",
@@ -90,8 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 confirmButtonColor: THEME_COLOR
             });
         }
-    } 
-*/
+    }
+
     // ---------------------------------------------------
     // 2. HERO FORM SUBMISSION
     // ---------------------------------------------------
@@ -248,10 +204,83 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	});
 	
+	
+	/* ===========================================
+	   TRUST COUNTER SECTION (PERFORMANCE OPTIMIZED)
+	=========================================== */
+
+	const counters = document.querySelectorAll(".count");
+	let counterStarted = false; // ensure counters only animate once
+	const DURATION = 2000; // total animation duration in ms
+
+	// Easing function (easeOutCubic)
+	function easeOutCubic(t) {
+	    return 1 - Math.pow(1 - t, 3);
+	}
+
+	// Animate a single counter
+	function animateCounter(counter) {
+	    const target = parseInt(counter.dataset.target, 10);
+	    let startTime = null;
+
+	    function update(timestamp) {
+	        if (!startTime) startTime = timestamp;
+
+	        const elapsed = timestamp - startTime;
+	        const progress = Math.min(elapsed / DURATION, 1);
+	        const eased = easeOutCubic(progress);
+
+	        const value = Math.floor(eased * target);
+	        counter.textContent = value;
+
+	        if (progress < 1) {
+	            requestAnimationFrame(update);
+	        } else {
+	            counter.textContent = target;
+	        }
+	    }
+
+	    requestAnimationFrame(update);
+	}
+
+	// Intersection Observer to trigger counters when section comes into view
+	const section = document.querySelector(".trust-counter");
+
+	if (section) {
+	    const observerOptions = {
+	        root: null,       // viewport
+	        threshold: 0.25   // trigger when 25% of section is visible
+	    };
+
+	    const observer = new IntersectionObserver((entries, obs) => {
+	        entries.forEach(entry => {
+	            if (entry.isIntersecting && !counterStarted) {
+	                counterStarted = true;
+	                counters.forEach(counter => {
+	                    counter.textContent = "0"; // reset to 0
+	                    animateCounter(counter);
+	                });
+	                obs.disconnect(); // stop observing
+	            }
+	        });
+	    }, observerOptions);
+
+	    observer.observe(section);
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 /* ===========================================
    NEW: TRUST COUNTER SECTION (FINAL FIX)
 =========================================== */
-
+/*
 const counters = document.querySelectorAll(".count");
 let counterStarted = false;
 const DURATION = 2000; // all counters finish in 2 seconds
@@ -284,7 +313,7 @@ function animateCounter(counter) {
     requestAnimationFrame(update);
 }
 
-/* Scroll-based trigger */
+ Scroll-based trigger 
 window.addEventListener("scroll", () => {
     if (counterStarted) return;
 
@@ -301,7 +330,7 @@ window.addEventListener("scroll", () => {
             counter.textContent = "0";
             animateCounter(counter);
         });
-    }
+    }*/
 	
 	/*    Review   */ 
 	const track = document.querySelector(".review-track");
@@ -333,7 +362,7 @@ window.addEventListener("scroll", () => {
 	   }
 
 	   animateReviews();
-});
+
 
 
 // WhatsApp number hidden in JS
