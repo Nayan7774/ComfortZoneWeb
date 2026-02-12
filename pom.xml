@@ -12,6 +12,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>interior-app</name>
 	<description>Interior design demo new</description>
+	
+	<packaging>jar</packaging>
 
 	<properties>
 		<java.version>17</java.version>
