@@ -75,5 +75,10 @@ public class MailService {
             e.printStackTrace();
         }
     }
+
+	public static String exchangeCodeForToken(String code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

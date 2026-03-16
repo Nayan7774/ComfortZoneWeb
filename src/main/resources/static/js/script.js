@@ -271,12 +271,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	
 	
 	
-	
-	
-	
-	
-	
-	
 /* ===========================================
    NEW: TRUST COUNTER SECTION (FINAL FIX)
 =========================================== */
